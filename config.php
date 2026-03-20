@@ -1,13 +1,12 @@
 <?php
-
-// chemin de base du projet - a adapter selon ton dossier
+// chemin de base du projet
 define('BASE_URL', '/Projets/EcoSchool-Ride_V2');
 
 // infos de connexion a la base
-$host = "localhost";
-$dbname = "echoschool_ride";
-$user = "root";
-$password = "";
+$host = getenv("HOST");
+$dbname = getenv("DB_NAME");
+$user = getenv("USER");
+$password = getenv("PASS_BD");
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
