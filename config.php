@@ -1,7 +1,7 @@
 <?php
 
-// chemin de base du projet pour le css
-define('BASE_URL', '/ecoschool_ride');
+// chemin de base du projet - a adapter selon ton dossier
+define('BASE_URL', '/Projets/EcoSchool-Ride_V2');
 
 // infos de connexion a la base
 $host = "localhost";

@@ -1,12 +1,12 @@
 <?php
-require_once 'include/header.php';
 require_once 'config.php';
+require_once 'include/header.php';
 require_once 'include/fonctions.php';
 require_once 'include/connexion.php';
 
 // si deja connecte on redirige
 if (isConnecte()) {
-    header("Location: /index.php");
+    header("Location: " . BASE_URL . "/index.php");
     exit();
 }
 
@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $parent = get_parent_by_email($pdo, $email);
 
-        // on verifie si le parent existe et si le mdp est bon
         if ($parent && password_verify($mdp, $parent['mot_de_passe'])) {
 
             // on stocke les infos dans la session
@@ -32,11 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['prenom'] = $parent['prenom'];
             $_SESSION['est_admin'] = $parent['est_admin'];
 
-            // on redirige selon le role
             if ($parent['est_admin'] == 1) {
-                header("Location: /admin/dashboard.php");
+                header("Location: " . BASE_URL . "/admin/dashboard.php");
             } else {
-                header("Location: /index.php");
+                header("Location: " . BASE_URL . "/index.php");
             }
             exit();
 
@@ -56,17 +54,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="message_erreur"><?php echo $erreur; ?></p>
     <?php endif; ?>
 
-    <form method="POST" action="">
-        <label>Email</label>
-        <input type="email" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required>
+    <div class="bloc_dashboard">
+        <form method="POST" action="">
+            <label>Email</label>
+            <input type="email" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required>
 
-        <label>Mot de passe</label>
-        <input type="password" name="mot_de_passe" required>
+            <label>Mot de passe</label>
+            <input type="password" name="mot_de_passe" required>
 
-        <button type="submit">Se connecter</button>
-    </form>
+            <button type="submit">Se connecter</button>
+        </form>
 
-    <p>Pas encore de compte ? <a href="/inscription.php">S'inscrire</a></p>
+        <p style="margin-top: 16px;">Pas encore de compte ? <a href="<?php echo BASE_URL; ?>/inscription.php">S'inscrire</a></p>
+    </div>
 </div>
 
 <?php require_once 'include/footer.php'; ?>

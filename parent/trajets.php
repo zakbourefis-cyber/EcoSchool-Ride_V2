@@ -76,7 +76,7 @@ require_once '../include/menu.php';
 ?>
 
 <div class="container">
-    <h1>🗺️ Réserver un trajet</h1>
+    <h1><i class="fa-solid fa-map-location-dot"></i> <i class="fa-solid fa-check"></i> Réserver un trajet</h1>
 
     <?php if ($erreur != ""): ?>
         <p class="message_erreur"><?php echo $erreur; ?></p>
@@ -140,9 +140,9 @@ require_once '../include/menu.php';
                             <input type="hidden" name="id_trajet" value="<?php echo $trajet['id_trajet']; ?>">
                             <button type="submit">
                                 <?php if ($places_dispo > 0): ?>
-                                    Réserver
+                                    <i class="fa-solid fa-check"></i> Réserver
                                 <?php else: ?>
-                                    Liste d'attente
+                                    <i class="fa-solid fa-hourglass-half"></i> Liste d'attente
                                 <?php endif; ?>
                             </button>
                         </form>

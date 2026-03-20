@@ -26,7 +26,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql = "INSERT INTO trajets (point_depart, destination, horaire, places_proposees, id_conducteur) VALUES (?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$point_depart, $destination, $horaire, $places_proposees, $id_conducteur]);
-        $succes = "Trajet créé avec succès !";
+
+        // on recupere l id du trajet qu on vient de creer
+        $id_nouveau_trajet = $pdo->lastInsertId();
+
+        // on essaie d assigner automatiquement les enfants en attente sur le meme itineraire
+        $nb_assignes = auto_assigner_attente($pdo, $id_nouveau_trajet);
+
+        if ($nb_assignes > 0) {
+            $succes = "Trajet créé ! " . $nb_assignes . " enfant(s) en attente ont été automatiquement assignés à ce trajet.";
+        } else {
+            $succes = "Trajet créé avec succès !";
+        }
     }
 }
 

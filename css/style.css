@@ -688,3 +688,144 @@ footer {
     border-top: 1px solid var(--gris-border);
     background-color: var(--blanc);
 }
+
+/* ================================================
+   CARTES INSCRIPTIONS (mes_inscriptions.php)
+   ================================================ */
+
+.carte_inscription {
+    border: 1px solid var(--gris-border);
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--blanc);
+}
+
+.carte_insc_valide {
+    border-left: 4px solid var(--vert-clair);
+}
+
+.carte_insc_attente {
+    border-left: 4px solid var(--orange);
+}
+
+.carte_insc_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--gris-border);
+    background-color: var(--gris-bg);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.carte_insc_trajet {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--vert-fonce);
+    font-size: 1em;
+}
+
+.trajet_depart {
+    color: var(--vert-fonce);
+}
+
+.trajet_fleche {
+    color: var(--texte-clair);
+    font-size: 1.1em;
+}
+
+.trajet_dest {
+    color: var(--vert-moyen);
+}
+
+.carte_insc_details {
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.detail_item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.detail_label {
+    font-size: 0.78em;
+    font-weight: 600;
+    color: var(--texte-clair);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.detail_valeur {
+    font-size: 0.95em;
+    color: var(--texte-fonce);
+    font-weight: 500;
+}
+
+.detail_valeur a {
+    color: var(--vert-moyen);
+    font-weight: 500;
+}
+
+.carte_insc_footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--gris-border);
+    background-color: var(--gris-bg);
+}
+
+.btn_petit {
+    font-size: 0.82em;
+    padding: 6px 14px;
+    margin-top: 0;
+}
+
+/* ================================================
+   FONT AWESOME - ajustements
+   ================================================ */
+
+.hero_icone {
+    font-size: 3.5em;
+    color: var(--vert-moyen);
+    margin-bottom: 18px;
+    display: block;
+    animation: flottement 3s ease-in-out infinite;
+}
+
+.carte_icone {
+    font-size: 2em;
+    margin-bottom: 14px;
+    display: block;
+    color: var(--vert-moyen);
+}
+
+.chiffre_icone i {
+    font-size: 1.3em;
+}
+
+nav a i {
+    font-size: 0.9em;
+    opacity: 0.85;
+}
+
+.detail_label i {
+    width: 14px;
+    text-align: center;
+    color: var(--vert-clair);
+}
+
+.carte_insc_trajet i {
+    color: var(--vert-clair);
+}
+
+h1 i, h2 i {
+    color: var(--vert-clair);
+    font-size: 0.85em;
+}

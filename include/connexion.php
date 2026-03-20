@@ -13,7 +13,7 @@ function isAdmin() {
 // rediriger si pas connecte
 function require_connexion() {
     if (!isConnecte()) {
-        header("Location: /login.php");
+        header("Location: " . BASE_URL . "/login.php");
         exit();
     }
 }
@@ -21,7 +21,7 @@ function require_connexion() {
 // rediriger si pas admin
 function require_admin() {
     if (!isAdmin()) {
-        header("Location: /index.php");
+        header("Location: " . BASE_URL . "/index.php");
         exit();
     }
 }

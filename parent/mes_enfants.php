@@ -34,7 +34,7 @@ require_once '../include/menu.php';
 ?>
 
 <div class="container">
-    <h1>👶 Mes enfants</h1>
+    <h1><i class="fa-solid fa-children"></i> Mes enfants</h1>
 
     <?php if ($erreur != ""): ?>
         <p class="message_erreur"><?php echo $erreur; ?></p>
@@ -70,8 +70,8 @@ require_once '../include/menu.php';
                         ?>
                     </td>
                     <td>
-                        <a class="btn" href="mes_inscriptions.php?id_enfant=<?php echo $liste_enfants[$i]['id_enfant']; ?>">Voir inscriptions</a>
-                        <a class="btn" href="trajets.php?id_enfant=<?php echo $liste_enfants[$i]['id_enfant']; ?>">Inscrire à un trajet</a>
+                        <a class="btn" href="mes_inscriptions.php?id_enfant=<?php echo $liste_enfants[$i]['id_enfant']; ?>"><i class="fa-solid fa-list"></i> Voir inscriptions</a>
+                        <a class="btn" href="trajets.php?id_enfant=<?php echo $liste_enfants[$i]['id_enfant']; ?>"><i class="fa-solid fa-plus"></i> Inscrire à un trajet</a>
                     </td>
                 </tr>
             <?php endfor; ?>
@@ -79,7 +79,7 @@ require_once '../include/menu.php';
     <?php endif; ?>
 
     <!-- formulaire ajout enfant -->
-    <h2>Ajouter un enfant</h2>
+    <h2><i class="fa-solid fa-plus"></i> Ajouter un enfant</h2>
     <form method="POST" action="">
         <label>Prénom *</label>
         <input type="text" name="prenom" required>
@@ -87,7 +87,7 @@ require_once '../include/menu.php';
         <label>Date de naissance</label>
         <input type="date" name="date_naissance">
 
-        <button type="submit">Ajouter</button>
+        <button type="submit"><i class="fa-solid fa-plus"></i> Ajouter</button>
     </form>
 </div>
 

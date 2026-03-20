@@ -88,12 +88,12 @@ require_once '../include/menu.php';
 
     <!-- demandes en attente -->
     <div class="bloc_dashboard">
-        <h2>⏳ Demandes en attente
+        <h2><i class="fa-solid fa-hourglass-half"></i> Demandes en attente
             <span class="badge_orange"><?php echo count($demandes); ?> en attente</span>
         </h2>
 
         <?php if (count($demandes) == 0): ?>
-            <p>Aucune demande en attente 🎉</p>
+            <p>Aucune demande en attente <i class="fa-solid fa-check-circle"></i></p>
         <?php else: ?>
 
         <table>
@@ -132,12 +132,12 @@ require_once '../include/menu.php';
                         <form method="POST" action="" style="display: inline;">
                             <input type="hidden" name="id_inscription" value="<?php echo $demande['id_inscription']; ?>">
                             <input type="hidden" name="action" value="approuver">
-                            <button type="submit" class="btn">Approuver</button>
+                            <button type="submit" class="btn"><i class="fa-solid fa-check"></i> Approuver</button>
                         </form>
                         <form method="POST" action="" style="display: inline;">
                             <input type="hidden" name="id_inscription" value="<?php echo $demande['id_inscription']; ?>">
                             <input type="hidden" name="action" value="refuser">
-                            <button type="submit" class="btn btn_rouge">Refuser</button>
+                            <button type="submit" class="btn btn_rouge"><i class="fa-solid fa-xmark"></i> Refuser</button>
                         </form>
                     </td>
                 </tr>
@@ -150,18 +150,18 @@ require_once '../include/menu.php';
     <!-- trajets a renforcer -->
     <?php if (count($trajets_complets) > 0): ?>
     <div class="bloc_dashboard">
-        <h2>⚠️ Trajets à renforcer
+        <h2><i class="fa-solid fa-triangle-exclamation"></i> Trajets à renforcer
             <span class="badge_rouge">Action requise</span>
         </h2>
-        <p class="info_orange">⚠️ Ces trajets nécessitent l'ajout d'un véhicule supplémentaire en raison d'une forte demande.</p>
+        <p class="info_orange"><i class="fa-solid fa-triangle-exclamation"></i> Ces trajets nécessitent l'ajout d'un véhicule supplémentaire en raison d'une forte demande.</p>
 
         <div class="grille_trajets_renforcer">
             <?php for ($i = 0; $i < count($trajets_complets); $i++): ?>
                 <?php $tc = $trajets_complets[$i]; ?>
                 <div class="carte_renforcer">
-                    <h3>🚌 <?php echo htmlspecialchars($tc['point_depart']); ?> → <?php echo htmlspecialchars($tc['destination']); ?></h3>
-                    <p>🕐 <?php echo $tc['horaire']; ?> &nbsp; 👥 <?php echo $tc['places_prises']; ?>/<?php echo $tc['places_proposees']; ?> + <?php echo $tc['nb_en_attente']; ?> en attente</p>
-                    <p class="alerte_rouge">⚠️ <?php echo $tc['nb_en_attente']; ?> enfant(s) en liste d'attente</p>
+                    <h3><i class="fa-solid fa-bus"></i> <?php echo htmlspecialchars($tc['point_depart']); ?> → <?php echo htmlspecialchars($tc['destination']); ?></h3>
+                    <p><i class="fa-solid fa-clock"></i> <?php echo $tc['horaire']; ?> &nbsp; <i class="fa-solid fa-users"></i> <?php echo $tc['places_prises']; ?>/<?php echo $tc['places_proposees']; ?> + <?php echo $tc['nb_en_attente']; ?> en attente</p>
+                    <p class="alerte_rouge"><i class="fa-solid fa-triangle-exclamation"></i> <?php echo $tc['nb_en_attente']; ?> enfant(s) en liste d'attente</p>
                     <a class="btn" href="vehicules.php">+ Ajouter un véhicule</a>
                 </div>
             <?php endfor; ?>
@@ -169,7 +169,7 @@ require_once '../include/menu.php';
     </div>
     <?php endif; ?>
 
-    <a class="btn" href="dashboard.php">← Retour au tableau de bord</a>
+    <a class="btn" href="dashboard.php"><i class="fa-solid fa-arrow-left"></i> Retour au tableau de bord</a>
 </div>
 
 <?php require_once '../include/footer.php'; ?>
