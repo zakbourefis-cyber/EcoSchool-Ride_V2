@@ -61,8 +61,8 @@ require_once '../include/menu.php';
                 <?php for ($i = 0; $i < count($liste_vehicules); $i++): ?>
                     <?php $v = $liste_vehicules[$i]; ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($v['modele']); ?></td>
-                        <td><?php echo htmlspecialchars($v['immatriculation'] ?? "—"); ?></td>
+                        <td><?php echo $v['modele']; ?></td>
+                        <td><?php echo $v['immatriculation'] ?? "—"; ?></td>
                         <td><?php echo $v['capacite_totale']; ?> places</td>
                     </tr>
                 <?php endfor; ?>

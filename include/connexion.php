@@ -22,6 +22,6 @@ function require_connexion() {
 function require_admin() {
     if (!isAdmin()) {
         header("Location: " . BASE_URL . "/index.php");
-        exit();
+        exit(); 
     }
 }

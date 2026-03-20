@@ -45,6 +45,7 @@ function get_inscriptions_enfant($pdo, $id_enfant) {
 
 // liberer une place quand un enfant se desinscrit
 // et passer le premier en attente sur ce trajet en VALIDE automatiquement
+
 function desinscrire_enfant($pdo, $id_inscription, $id_parent) {
 
     // verif que l inscription appartient bien a un enfant du parent connecte

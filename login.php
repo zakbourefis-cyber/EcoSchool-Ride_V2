@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="bloc_dashboard">
         <form method="POST" action="">
             <label>Email</label>
-            <input type="email" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required>
+            <input type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" required>
 
             <label>Mot de passe</label>
             <input type="password" name="mot_de_passe" required>

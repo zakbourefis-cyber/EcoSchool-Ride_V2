@@ -147,7 +147,7 @@ require_once '../include/menu.php';
 
     <?php endif; ?>
 
-    <a class="btn" href="trajets.php"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-check"></i> Réserver un trajet</a>
+    <a class="btn" href="trajets.php"> Réserver un trajet</a>
 </div>
 
 <?php require_once '../include/footer.php'; ?>

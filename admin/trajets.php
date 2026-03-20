@@ -78,11 +78,11 @@ require_once '../include/menu.php';
                     $places_prises = get_places_prises($pdo, $t['id_trajet']);
                     ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($t['point_depart']); ?></td>
-                        <td><?php echo htmlspecialchars($t['destination']); ?></td>
+                        <td><?php echo $t['point_depart']; ?></td>
+                        <td><?php echo $t['destination']; ?></td>
                         <td><?php echo $t['horaire']; ?></td>
                         <td><?php echo $places_prises . "/" . $t['places_proposees']; ?></td>
-                        <td><?php echo htmlspecialchars($t['prenom'] . " " . $t['nom']); ?></td>
+                        <td><?php echo $t['prenom'] ." ". $t['nom']; ?></td>
                     </tr>
                 <?php endfor; ?>
             </table>
@@ -116,9 +116,9 @@ require_once '../include/menu.php';
                 <?php for ($i = 0; $i < count($liste_conducteurs); $i++): ?>
                     <?php $c = $liste_conducteurs[$i]; ?>
                     <option value="<?php echo $c['id_conducteur']; ?>">
-                        <?php echo htmlspecialchars($c['prenom'] . " " . $c['nom']); ?>
+                        <?php echo $c['prenom'] . " " . $c['nom']; ?>
                         <?php if ($c['modele'] != null): ?>
-                            - <?php echo htmlspecialchars($c['modele']); ?> (<?php echo $c['capacite_totale']; ?> places)
+                            - <?php echo $c['modele']; ?> (<?php echo $c['capacite_totale']; ?> places)
                         <?php endif; ?>
                     </option>
                 <?php endfor; ?>

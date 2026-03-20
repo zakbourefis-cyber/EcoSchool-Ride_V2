@@ -64,8 +64,15 @@ $nb_attente = count($demandes_attente);
         <?php else: ?>
         <table>
             <tr>
-                <th>Trajet</th><th>Conducteur</th><th>Horaire</th><th>Capacité</th><th>Remplissage</th><th>Statut</th><th>Actions</th>
+                <th>Trajet</th>
+                <th>Conducteur</th>
+                <th>Horaire</th>
+                <th>Capacité</th>
+                <th>Remplissage</th>
+                <th>Statut</th>
+                <th>Actions</th>
             </tr>
+            
             <?php for ($i = 0; $i < count($tous_trajets); $i++): ?>
                 <?php
                 $trajet = $tous_trajets[$i];
@@ -80,8 +87,8 @@ $nb_attente = count($demandes_attente);
                 if ($pourcentage >= 100) { $couleur_barre = "#d62828"; }
                 ?>
                 <tr>
-                    <td><strong><?php echo htmlspecialchars($trajet['point_depart']); ?></strong> → <?php echo htmlspecialchars($trajet['destination']); ?></td>
-                    <td><?php echo htmlspecialchars($trajet['prenom'] . " " . $trajet['nom']); ?></td>
+                    <td><strong><?php echo $trajet['point_depart']; ?></strong> → <?php echo $trajet['destination']; ?></td>
+                    <td><?php echo $trajet['prenom'] . " " . $trajet['nom']; ?></td>
                     <td><?php echo $trajet['horaire']; ?></td>
                     <td><?php echo $places_prises . "/" . $trajet['places_proposees']; ?></td>
                     <td>

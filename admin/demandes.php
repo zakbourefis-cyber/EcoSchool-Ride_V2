@@ -123,9 +123,9 @@ require_once '../include/menu.php';
                 $position = $compteur_position[$id_trajet];
             ?>
                 <tr>
-                    <td><strong><?php echo htmlspecialchars($demande['prenom_enfant']); ?></strong></td>
-                    <td><?php echo htmlspecialchars($demande['prenom_parent'] . " " . $demande['nom_parent']); ?></td>
-                    <td><?php echo htmlspecialchars($demande['point_depart']); ?> → <?php echo htmlspecialchars($demande['destination']); ?> (<?php echo $demande['horaire']; ?>)</td>
+                    <td><strong><?php echo $demande['prenom_enfant']; ?></strong></td>
+                    <td><?php echo $demande['prenom_parent'] . " " . $demande['nom_parent']; ?></td>
+                    <td><?php echo $demande['point_depart']; ?> → <?php echo $demande['destination']; ?> (<?php echo $demande['horaire']; ?>)</td>
                     <td><?php echo $demande['date_demande']; ?></td>
                     <td>#<?php echo $position; ?></td>
                     <td>
@@ -159,9 +159,9 @@ require_once '../include/menu.php';
             <?php for ($i = 0; $i < count($trajets_complets); $i++): ?>
                 <?php $tc = $trajets_complets[$i]; ?>
                 <div class="carte_renforcer">
-                    <h3><i class="fa-solid fa-bus"></i> <?php echo htmlspecialchars($tc['point_depart']); ?> → <?php echo htmlspecialchars($tc['destination']); ?></h3>
+                    <h3><i class="fa-solid fa-bus"></i> <?php echo $tc['point_depart']; ?> → <?php echo $tc['destination']; ?></h3>
                     <p><i class="fa-solid fa-clock"></i> <?php echo $tc['horaire']; ?> &nbsp; <i class="fa-solid fa-users"></i> <?php echo $tc['places_prises']; ?>/<?php echo $tc['places_proposees']; ?> + <?php echo $tc['nb_en_attente']; ?> en attente</p>
-                    <p class="alerte_rouge"><i class="fa-solid fa-triangle-exclamation"></i> <?php echo $tc['nb_en_attente']; ?> enfant(s) en liste d'attente</p>
+                    <p class="alerte_rouge"><i class="fa-solid fa-triangle-exclamation"></i> <?php echo $tc['nb_en_attente']; ?> enfant en liste d'attente</p>
                     <a class="btn" href="vehicules.php">+ Ajouter un véhicule</a>
                 </div>
             <?php endfor; ?>

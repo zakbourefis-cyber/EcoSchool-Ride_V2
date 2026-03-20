@@ -59,16 +59,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="POST" action="">
             <label>Prénom *</label>
-            <input type="text" name="prenom" value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>" required>
+            <input type="text" name="prenom" value="<?php echo isset($_POST['prenom']) ? $_POST['prenom'] : ''; ?>" required>
 
             <label>Nom *</label>
-            <input type="text" name="nom" value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>" required>
+            <input type="text" name="nom" value="<?php echo isset($_POST['nom']) ? $_POST['nom'] : ''; ?>" required>
 
             <label>Email *</label>
-            <input type="email" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required>
+            <input type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" required>
 
             <label>Téléphone</label>
-            <input type="text" name="telephone" value="<?php echo isset($_POST['telephone']) ? htmlspecialchars($_POST['telephone']) : ''; ?>">
+            <input type="text" name="telephone" value="<?php echo isset($_POST['telephone']) ? $_POST['telephone'] : ''; ?>">
 
             <label>Mot de passe *</label>
             <input type="password" name="mot_de_passe" required>

@@ -51,7 +51,7 @@ require_once '../include/menu.php';
     <div class="bloc_dashboard">
         <h2>Liste des conducteurs</h2>
 
-        <?php if (count($liste_conducteurs) == 0): ?>
+        <?php if (count($liste_conducteurs) == 0): ?> <!-- on affiche personne si y'a personnez-->
             <p>Aucun conducteur enregistré.</p>
         <?php else: ?>
             <table>
@@ -65,13 +65,13 @@ require_once '../include/menu.php';
                 <?php for ($i = 0; $i < count($liste_conducteurs); $i++): ?>
                     <?php $c = $liste_conducteurs[$i]; ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($c['nom']); ?></td>
-                        <td><?php echo htmlspecialchars($c['prenom']); ?></td>
-                        <td><?php echo htmlspecialchars($c['telephone']); ?></td>
-                        <td><?php echo htmlspecialchars($c['email'] ?? "—"); ?></td>
+                        <td><?php echo $c['nom']; ?></td>
+                        <td><?php echo $c['prenom']; ?></td>
+                        <td><?php echo $c['telephone']; ?></td>
+                        <td><?php echo $c['email']; ?></td>
                         <td>
                             <?php if ($c['modele'] != null): ?>
-                                <?php echo htmlspecialchars($c['modele']); ?> (<?php echo $c['capacite_totale']; ?> places)
+                                <?php echo $c['modele']; ?> (<?php echo $c['capacite_totale']; ?> places)
                             <?php else: ?>
                                 <span class="badge_orange">Aucun véhicule</span>
                             <?php endif; ?>
@@ -103,7 +103,7 @@ require_once '../include/menu.php';
                 <option value="">-- Aucun véhicule --</option>
                 <?php for ($i = 0; $i < count($liste_vehicules); $i++): ?>
                     <option value="<?php echo $liste_vehicules[$i]['id_vehicule']; ?>">
-                        <?php echo htmlspecialchars($liste_vehicules[$i]['modele']); ?> - <?php echo $liste_vehicules[$i]['immatriculation']; ?> (<?php echo $liste_vehicules[$i]['capacite_totale']; ?> places)
+                        <?php echo $liste_vehicules[$i]['modele']; ?> - <?php echo $liste_vehicules[$i]['immatriculation']; ?> (<?php echo $liste_vehicules[$i]['capacite_totale']; ?> places)
                     </option>
                 <?php endfor; ?>
             </select>
@@ -112,7 +112,7 @@ require_once '../include/menu.php';
         </form>
     </div>
 
-    <a class="btn" href="dashboard.php">← Retour au tableau de bord</a>
+    <a class="btn" href="dashboard.php"> Retour au tableau de bord</a>
 </div>
 
 <?php require_once '../include/footer.php'; ?>
