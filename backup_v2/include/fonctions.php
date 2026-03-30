@@ -1,8 +1,7 @@
 <?php
 
 // recuperer tous les trajets
-function get_all_trajets($pdo)
-{
+function get_all_trajets($pdo) {
     $sql = "SELECT t.*, c.nom, c.prenom, v.capacite_totale
             FROM trajets t
             JOIN conducteurs c ON t.id_conducteur = c.id_conducteur
@@ -12,8 +11,7 @@ function get_all_trajets($pdo)
 }
 
 // compter les places prises sur un trajet
-function get_places_prises($pdo, $id_trajet)
-{
+function get_places_prises($pdo, $id_trajet) {
     $sql = "SELECT COUNT(*) FROM inscriptions WHERE id_trajet = ? AND statut = 'VALIDE'";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id_trajet]);
@@ -21,8 +19,7 @@ function get_places_prises($pdo, $id_trajet)
 }
 
 // recuperer les enfants d'un parent
-function get_enfants_parent($pdo, $id_parent)
-{
+function get_enfants_parent($pdo, $id_parent) {
     $sql = "SELECT * FROM enfants WHERE id_parent = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id_parent]);
@@ -30,8 +27,7 @@ function get_enfants_parent($pdo, $id_parent)
 }
 
 // recuperer les inscriptions d'un enfant avec tous les details
-function get_inscriptions_enfant($pdo, $id_enfant)
-{
+function get_inscriptions_enfant($pdo, $id_enfant) {
     $sql = "SELECT i.*,
                    t.point_depart, t.destination, t.horaire, t.places_proposees,
                    c.nom AS conducteur_nom, c.prenom AS conducteur_prenom, c.telephone AS conducteur_tel,
@@ -49,9 +45,7 @@ function get_inscriptions_enfant($pdo, $id_enfant)
 
 // liberer une place quand un enfant se desinscrit
 // et passer le premier en attente sur ce trajet en VALIDE automatiquement
-
-function desinscrire_enfant($pdo, $id_inscription, $id_parent)
-{
+function desinscrire_enfant($pdo, $id_inscription, $id_parent) {
 
     // verif que l inscription appartient bien a un enfant du parent connecte
     $sqlCheck = "SELECT i.id_trajet FROM inscriptions i
@@ -94,8 +88,7 @@ function desinscrire_enfant($pdo, $id_inscription, $id_parent)
 }
 
 // recuperer un parent par son email
-function get_parent_by_email($pdo, $email)
-{
+function get_parent_by_email($pdo, $email) {
     $sql = "SELECT * FROM parents WHERE email = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
@@ -103,8 +96,7 @@ function get_parent_by_email($pdo, $email)
 }
 
 // recuperer tous les conducteurs
-function get_all_conducteurs($pdo)
-{
+function get_all_conducteurs($pdo) {
     $sql = "SELECT c.*, v.modele, v.capacite_totale
             FROM conducteurs c
             LEFT JOIN vehicules v ON c.id_vehicule = v.id_vehicule";
@@ -113,16 +105,14 @@ function get_all_conducteurs($pdo)
 }
 
 // recuperer tous les vehicules
-function get_all_vehicules($pdo)
-{
+function get_all_vehicules($pdo) {
     $sql = "SELECT * FROM vehicules";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // recuperer les demandes en attente
-function get_demandes_attente($pdo)
-{
+function get_demandes_attente($pdo) {
     $sql = "SELECT i.*, e.prenom AS prenom_enfant, p.nom AS nom_parent, p.prenom AS prenom_parent,
                    t.point_depart, t.destination, t.horaire
             FROM inscriptions i
@@ -136,8 +126,7 @@ function get_demandes_attente($pdo)
 }
 
 // recuperer un trajet par son id
-function get_trajet_by_id($pdo, $id_trajet)
-{
+function get_trajet_by_id($pdo, $id_trajet) {
     $sql = "SELECT t.*, c.nom, c.prenom, v.capacite_totale
             FROM trajets t
             JOIN conducteurs c ON t.id_conducteur = c.id_conducteur
@@ -151,8 +140,7 @@ function get_trajet_by_id($pdo, $id_trajet)
 // auto assigner les enfants en attente sur un nouveau trajet du meme itineraire
 // on prend les enfants EN_ATTENTE par ordre de date_demande (premier arrive premier servi)
 // et on les bascule sur le nouveau trajet si y a de la place
-function auto_assigner_attente($pdo, $id_trajet_nouveau)
-{
+function auto_assigner_attente($pdo, $id_trajet_nouveau) {
 
     // on recupere les infos du nouveau trajet
     $nouveau_trajet = get_trajet_by_id($pdo, $id_trajet_nouveau);
@@ -161,9 +149,9 @@ function auto_assigner_attente($pdo, $id_trajet_nouveau)
         return 0;
     }
 
-    $point_depart = $nouveau_trajet['point_depart'];
-    $destination = $nouveau_trajet['destination'];
-    $places_max = $nouveau_trajet['places_proposees'];
+    $point_depart   = $nouveau_trajet['point_depart'];
+    $destination    = $nouveau_trajet['destination'];
+    $places_max     = $nouveau_trajet['places_proposees'];
 
     // on cherche tous les trajets complets avec le meme itineraire (sauf le nouveau)
     $sql_trajets_complets = "SELECT t.id_trajet FROM trajets t

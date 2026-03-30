@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prenom = trim($_POST['prenom']);
     $date_naissance = $_POST['date_naissance'];
 
-    if ($prenom == "") { //vérif prenom 
+    if ($prenom == "") {
         $erreur = "Le prénom est obligatoire.";
     } else {
         $sql = "INSERT INTO enfants (prenom, date_naissance, id_parent) VALUES (?, ?, ?)";
