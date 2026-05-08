@@ -829,3 +829,187 @@ h1 i, h2 i {
     color: var(--vert-clair);
     font-size: 0.85em;
 }
+
+/* ================================================
+   Messagerie
+   ================================================ */
+.bloc_messagerie {
+    display: flex;
+    background-color: var(--blanc);
+    border: 1px solid var(--gris-border);
+    border-radius: 8px;
+    height: 550px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.messagerie_contacts {
+    width: 30%;
+    background-color: var(--vert-bg);
+    border-right: 1px solid var(--gris-border);
+    padding: 20px;
+}
+
+.contact_item {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: var(--blanc);
+    border: 1px solid var(--vert-clair);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.trajet_nom {
+    font-size: 0.75em;
+}
+
+.info_bulle {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+.messagerie_chat {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.chat_ecran {
+    flex: 1;
+    background-color: #f9f9f9;
+    border: 1px solid var(--gris-border);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    overflow-y: auto;
+}
+
+.chat_vide {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.chat_vide i {
+    font-size: 2em;
+    color: var(--vert-pale);
+    margin-bottom: 10px;
+}
+
+.texte_bienvenue {
+    color: var(--texte-clair);
+}
+
+/* On cache le formulaire par défaut */
+.chat_form {
+    display: none;
+}
+
+.chat_form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--gris-border);
+    border-radius: 5px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.btn_envoyer {
+    margin: 0;
+}
+
+.retour_accueil {
+    margin-top: 20px;
+}
+
+.chat_header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gris-border);
+    margin-bottom: 15px;
+}
+
+.messages_container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 15px 15px 15px 5px;
+    height: 400px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for chat */
+.messages_container::-webkit-scrollbar {
+    width: 6px;
+}
+.messages_container::-webkit-scrollbar-thumb {
+    background-color: var(--gris-border);
+    border-radius: 6px;
+}
+.messages_container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.message_bulle {
+    max-width: 75%;
+    display: inline-flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    animation: fadeIn 0.35s cubic-bezier(0.1, 0.82, 0.25, 1);
+    position: relative;
+    padding: 12px 16px;
+    line-height: 1.4;
+}
+
+.message_bulle p {
+    margin-bottom: 5px;
+    color: inherit;
+    font-size: 0.95em;
+    word-break: break-word;
+}
+
+.message_bulle .date {
+    font-size: 0.72em;
+    opacity: 0.7;
+    text-align: right;
+    display: block;
+    margin-top: 2px;
+}
+
+.message_bulle.parent {
+    background: linear-gradient(135deg, var(--vert-clair) 0%, var(--vert-moyen) 100%);
+    color: var(--blanc);
+    border-radius: 18px 18px 0 18px;
+    align-self: flex-end;
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.15);
+}
+
+.message_bulle.conducteur {
+    background-color: var(--blanc);
+    color: var(--texte-fonce);
+    border-radius: 18px 18px 18px 0;
+    align-self: flex-start;
+    border: 1px solid var(--gris-border);
+}
+
+.chat_header {
+    font-family: var(--font-titre);
+    font-size: 1.15em;
+    color: var(--vert-fonce);
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--vert-pale);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact_item.contact_actif {
+    background-color: var(--vert-pale);
+    border-left: 3px solid var(--vert-moyen);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
